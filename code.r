@@ -1,14 +1,15 @@
 ## 1
 strategy1 <- function(n, k) {
+  m <- k
   index <- rep(0, 2*n)
   index[k] <- 1
   
   S <- sample(1:(2*n), 2*n)
   for (i in 1:(n+1)) {
-    if (S[k] == k) break
+    if (S[m] == k) break
     else {
-      k <- S[k]
-      index[k] <- 1
+      m <- S[m]
+      index[m] <- 1
     }
   }
   
@@ -16,17 +17,17 @@ strategy1 <- function(n, k) {
   else {0}
 }
 
-strategy2 <- function(n) {
-  k <- sample(1:(2*n), 1)
+strategy2 <- function(n, k) {
+  m <- sample(1:(2*n), 1)
   index <- rep(0, 2*n)
-  index[k] <- 1
+  index[m] <- 1
   
   S <- sample(1:(2*n), 2*n)
   for (i in 1:(n+1)) {
-    if (S[k] == k) break
+    if (S[m] == k) break
     else {
-      k <- S[k]
-      index[k] <- 1
+      m <- S[m]
+      index[m] <- 1
     }
   }
   
@@ -49,7 +50,7 @@ Pone <- function(n, k, strategy, nreps) {
     }
   } else if (strategy == 2) {
     for (i in 1:nreps) {
-      pass[i] <- strategy2(n)
+      pass[i] <- strategy2(n, k)
     }
   } else {
     for (i in 1:nreps) {
@@ -59,7 +60,7 @@ Pone <- function(n, k, strategy, nreps) {
   sum(pass)/nreps
 }
 
-Pone(5,1,3,10000)
+Pone(5,1,1,10000)
 
 ##2 
 Pall <- function(n, strategy, nreps) {
