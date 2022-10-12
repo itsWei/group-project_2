@@ -130,16 +130,20 @@ Pall <- function(n, strategy, nreps) {
   }
 
 ##3
+##  example code using function Pone to estimate the individual probabilities under strategy 1, 2 and 3 for n = 5.
 Pone(5,1,1,10000)
 Pone(5,1,2,10000)
 Pone(5,1,3,10000)
+##  example code using function Pone to estimate the individual probabilities under strategy 1, 2 and 3 for n = 50.
 Pone(50,1,1,10000)
 Pone(50,1,2,10000)
 Pone(50,1,3,10000)
 
+##  example code using function Pall to estimate the joint success probabilities under strategy 1, 2 and 3 for n = 5.
 Pall(5,1,10000)
 Pall(5,2,10000)
 Pall(5,3,10000)
+##  example code using function Pall to estimate the joint success probabilities under strategy 1, 2 and 3 for n = 50.
 Pall(50,1,10000)
 Pall(50,2,10000)
 Pall(50,3,10000)
