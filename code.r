@@ -1,15 +1,15 @@
 ## 1
 strategy1 <- function(n, k) {
-  m <- k
+  card <- k
   index <- rep(0, 2*n)
   index[k] <- 1
   
   S <- sample(1:(2*n), 2*n)
   for (i in 1:(n+1)) {
-    if (S[m] == k) break
+    if (S[card] == k) break
     else {
-      m <- S[m]
-      index[m] <- 1
+      card <- S[card]
+      index[card] <- 1
     }
   }
   
@@ -18,16 +18,16 @@ strategy1 <- function(n, k) {
 }
 
 strategy2 <- function(n, k) {
-  m <- sample(1:(2*n), 1)
+  card <- sample(1:(2*n), 1)
   index <- rep(0, 2*n)
-  index[m] <- 1
+  index[card] <- 1
   
   S <- sample(1:(2*n), 2*n)
   for (i in 1:(n+1)) {
-    if (S[m] == k) break
+    if (S[card] == k) break
     else {
-      m <- S[m]
-      index[m] <- 1
+      card <- S[card]
+      index[card] <- 1
     }
   }
   
