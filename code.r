@@ -1,3 +1,27 @@
+## Different from strategy 3, in strategy 1 and 2, the success of one prisoner is not independent of 
+## the success of other prisoners since they depend on the distribution of 2n numbers.
+
+## p(2n prisoners all escape successfully)=p(maximu loops length less than or equal to n)
+## =1-p(maximum loops length longer than n)=1-1/(n+1)-1/(n+2)-...-1/(2n)=0.31, which is surprising large.
+
+## Group member:
+## Changliang Wei S2345097
+## Simin Wang S2417531
+## Zheng Wang S2283040
+
+## Contribution: 
+## Each member contributes roughly the same to this project.
+## Changliang Wei and Simin Wang contribute more on the first function.
+## Zheng Wang contributes more on the comments.
+
+## Overview comments:
+## This code gives a method to solve the 2n prisoner problem, the code estimates the probabilities of success for a single
+## prisoner under strategy 1,2 and 3. 
+## Then the code to estimate a probability distribution is provided.
+## Example code using functions to estimate the individual and joint success probabilities under
+## each strategy for different n is also given, with probabilities visualised. 
+
+
 ## 1
 strategy1 <- function(n, k, S) {
   card <- k
