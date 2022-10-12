@@ -93,6 +93,7 @@ Pall <- function(n, strategy, nreps) {
   success <- rep(0, nreps)
   if (strategy == 1) {
     for (i in 1:nreps) {
+      S <- sample(1:(2*n), 2*n)
       for (j in 1:(2*n)) {
         success[i] <- strategy1(n, j) + success[i]
       }
@@ -101,6 +102,7 @@ Pall <- function(n, strategy, nreps) {
     }
   else if (strategy == 2) {
     for (i in 1:nreps) {
+      S <- sample(1:(2*n), 2*n)
       for (j in 1:(2*n)) {
         success[i] <- strategy2(n) + success[i]
       }
@@ -109,11 +111,26 @@ Pall <- function(n, strategy, nreps) {
     }
   else if (strategy == 3) {
     for (i in 1:nreps) {
+      S <- sample(1:(2*n), 2*n)
       for (j in 1:(2*n)) {
         success[i] <- strategy3(n, j) + success[i]
       }
       }
     sum(success == 2*n) / nreps
   }
-  
   }
+
+##3
+Pone(5,1,1,10000)
+Pone(5,1,2,10000)
+Pone(5,1,3,10000)
+Pone(50,1,1,10000)
+Pone(50,1,2,10000)
+Pone(50,1,3,10000)
+
+Pall(5,1,10000)
+Pall(5,2,10000)
+Pall(5,3,10000)
+Pall(50,1,10000)
+Pall(50,2,10000)
+Pall(50,3,10000)
