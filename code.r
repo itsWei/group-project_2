@@ -1,3 +1,4 @@
+## 1
 strategy1 <- function(n, k) {
   index <- rep(0, 2*n)
   index[k] <- 1
@@ -59,3 +60,33 @@ Pone <- function(n, k, strategy, nreps) {
 }
 
 Pone(5,1,3,10000)
+
+##2 
+Pall <- function(n, strategy, nreps) {
+  success <- rep(0, nreps)
+  if (strategy == 1) {
+    for (i in 1:nreps) {
+      for (j in 1:(2*n)) {
+        success[i] <- strategy1(n, j) + success[i]
+      }
+      }
+    sum(success == 2*n) / nreps
+    }
+  else if (strategy == 2) {
+    for (i in 1:nreps) {
+      for (j in 1:(2*n)) {
+        success[i] <- strategy2(n) + success[i]
+      }
+      }
+    sum(success == 2*n) / nreps
+    }
+  else if (strategy == 3) {
+    for (i in 1:nreps) {
+      for (j in 1:(2*n)) {
+        success[i] <- strategy3(n, j) + success[i]
+      }
+      }
+    sum(success == 2*n) / nreps
+  }
+  
+  }
