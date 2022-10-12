@@ -22,26 +22,30 @@
 ## each strategy for different n is also given, with probabilities visualised. 
 
 
-## 1
+## function Pone estimates the probabilities of success for a single prisoner under each strategy.
+
+# strategy 1: give a function to estimate the probabilities of success for a single prisoner under strategy 1;
+# the function takes n, k (the prison's number), S () as inputs and the function returns ???
 strategy1 <- function(n, k, S) {
-  card <- k
-  index <- rep(0, 2*n)
-  index[k] <- 1
+  card <- k  # the prisoner starts at the box with their number on it, opens it and reads the number on the card: k.
+  index <- rep(0, 2*n)  # create a zero vector with length 2n to represent the index of card number
+  index[k] <- 1  # if cark k is found, denote 1 at index k
   
   for (i in 1:(n+1)) {
-    if (S[card] == k) break
+    if (S[card] == k) break. # stop opening the boxes when find their owm number k.
     else {
-      card <- S[card]
-      index[card] <- 1
+      card <- S[card]. # continue to open boxes to find new cards.
+      index[card] <- 1. # denote 1 for all card in boxes that have been opened.
     }
   }
   
-  if (sum(index) <= n) {1}
-  else {0}
+  if (sum(index) <= n) {1}  # find their own number with opening boxes within n times.
+  else {0}  # without finding their own number within n times.
 }
 
+## same as strategy 1, but the prisoner starts from a randomly selected box.
 strategy2 <- function(n, k, S) {
-  card <- sample(1:(2*n), 1)
+  card <- sample(1:(2*n), 1). #  the prisoner starts from a randomly selected box.
   index <- rep(0, 2*n)
   index[card] <- 1
   
@@ -57,32 +61,37 @@ strategy2 <- function(n, k, S) {
   else {0}
 }
 
+## randomly choose n boxes from 2n boxes
 strategy3 <- function(n, k, S) {
-  if (k %in% S[1:n]) {1}
-  else {0}
+  if (k %in% S[1:n]) {1}  # the selected n cards contain number k
+  else {0}  # the selected n cards dose not contain number k.
 }
 
+## function Pone takes n, k (the prisoner’s number), strategy (1, 2 or 3) 
+## and nreps (the number of replicate simulations to run in order to estimate the probability) as inputs.
+## function Pone returns the probability estimate.
 
 Pone <- function(n, k, strategy, nreps) {
   pass <- rep(0, nreps)
-  if (strategy == 1) {
-    for (i in 1:nreps) {
+  if (strategy == 1) {  # choose strategy 1
+    for (i in 1:nreps) {  # simulate strategy 1 nreps times
       S <- sample(1:(2*n), 2*n)
       pass[i] <- strategy1(n, k, S)
-    }
-  } else if (strategy == 2) {
-    for (i in 1:nreps) {
+    } 
+  } else if (strategy == 2) {  # choose strategy 2
+    for (i in 1:nreps) {  # simulate strategy 2 nreps times
       S <- sample(1:(2*n), 2*n)
       pass[i] <- strategy2(n, k, S)
     }
-  } else {
-    for (i in 1:nreps) {
+  }else {  # choose strategy 3
+    for (i in 1:nreps) {  # simulate strategy 3 nreps times
       S <- sample(1:(2*n), 2*n)
       pass[i] <- strategy3(n, k, S)
     }
   }
-  sum(pass)/nreps
+  sum(pass)/nreps  # the probabilities of success for a single prisoner.
 }
+
 
 Pone(5,1,1,10000)
 Pone(5,1,2,10000)
