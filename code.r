@@ -1,8 +1,6 @@
 ## Different from strategy 3, in strategy 1 and 2, the success of one prisoner is not independent of 
 ## the success of other prisoners since they depend on the distribution of 2n numbers.
 
-## p(2n prisoners all escape successfully)=p(maximu loops length less than or equal to n)
-## =1-p(maximum loops length longer than n)=1-1/(n+1)-1/(n+2)-...-1/(2n)=0.31, which is surprising large.
 
 ## Group member:
 ## Changliang Wei S2345097
@@ -147,3 +145,15 @@ Pall(5,3,10000)
 Pall(50,1,10000)
 Pall(50,2,10000)
 Pall(50,3,10000)
+
+
+##4
+## The probability that all prisoners find their own number is: 
+## p(2n prisoners all escape successfully)
+## =p(maximu loops length less than or equal to n)
+## =1-p(maximum loops length longer than n)
+## =1-1/(n+1)-1/(n+2)-...-1/(2n)=0.31
+## which is surprising large.
+
+
+
