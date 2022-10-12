@@ -45,7 +45,6 @@ strategy2 <- function(n, k, S) {
   index <- rep(0, 2*n)
   index[card] <- 1
   
-  S <- sample(1:(2*n), 2*n)
   for (i in 1:(n+1)) {
     if (S[card] == k) break
     else {
