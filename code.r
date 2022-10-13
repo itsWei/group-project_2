@@ -30,10 +30,10 @@ strategy1 <- function(n, k, S) {
   index[k] <- 1  # if cark k is found, denote 1 at index k
   
   for (i in 1:(n+1)) {
-    if (S[card] == k) break. # stop opening the boxes when find their owm number k.
+    if (S[card] == k) break # stop opening the boxes when find their owm number k.
     else {
-      card <- S[card]. # continue to open boxes to find new cards.
-      index[card] <- 1. # denote 1 for all card in boxes that have been opened.
+      card <- S[card] # continue to open boxes to find new cards.
+      index[card] <- 1 # denote 1 for all card in boxes that have been opened.
     }
   }
   
@@ -43,7 +43,7 @@ strategy1 <- function(n, k, S) {
 
 ## same as strategy 1, but the prisoner starts from a randomly selected box.
 strategy2 <- function(n, k, S) {
-  card <- sample(1:(2*n), 1). #  the prisoner starts from a randomly selected box.
+  card <- sample(1:(2*n), 1) #  the prisoner starts from a randomly selected box.
   index <- rep(0, 2*n)
   index[card] <- 1
   
