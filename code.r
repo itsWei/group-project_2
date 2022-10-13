@@ -161,3 +161,61 @@ Pall(50,3,10000)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+strategy1 <- function(n, k, S) {
+  card <- k  # the prisoner starts at the box with their number on it, opens it and reads the number on the card: k.
+  index <- rep(0, 2*n)  # create a zero vector with length 2n to represent the index of card number
+  index[k] <- 1  # if card k is found, denote 1 at index k
+  
+  for (i in 1:(2*n)) {
+    if (S[card] == k) break # stop opening the boxes when find their owm number k.
+    else {
+      card <- S[card] # continue to open boxes to find new cards.
+      index[card] <- 1 # denote 1 for all card in boxes that have been opened.
+    }
+  }
+
+  sum(index)
+  
+}
+
+n <- 50
+nreps <- 10000
+
+dloop <- function(n, nreps){
+  sum_b <- rep(0,2*n)
+  
+  
+  for (i in 1:nreps){
+    b <- rep(0,2*n)
+    c <- rep(0,2*n)
+    S <- sample(1:(2*n), 2*n)  # A randomly generated sequence of cards with length 2n
+    for (j in 1:(2*n)){
+      b[j] <- strategy1(n, j, S)
+    }
+    a <- unique(b)
+    c[a] <- 1
+    sum_b <- sum_b + c
+  }
+  
+  sum_b/nreps
+}
