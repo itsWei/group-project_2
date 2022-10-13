@@ -102,7 +102,7 @@ Pall <- function(n, strategy, nreps) {
     for (i in 1:nreps) {
       S <- sample(1:(2*n), 2*n)
       for (j in 1:(2*n)) {
-        success[i] <- strategy1(n, j) + success[i]
+        success[i] <- strategy1(n, j, S) + success[i]
       }
       }
     sum(success == 2*n) / nreps
@@ -111,7 +111,7 @@ Pall <- function(n, strategy, nreps) {
     for (i in 1:nreps) {
       S <- sample(1:(2*n), 2*n)
       for (j in 1:(2*n)) {
-        success[i] <- strategy2(n) + success[i]
+        success[i] <- strategy2(n, j, S) + success[i]
       }
       }
     sum(success == 2*n) / nreps
@@ -120,7 +120,7 @@ Pall <- function(n, strategy, nreps) {
     for (i in 1:nreps) {
       S <- sample(1:(2*n), 2*n)
       for (j in 1:(2*n)) {
-        success[i] <- strategy3(n, j) + success[i]
+        success[i] <- strategy3(n, j, S) + success[i]
       }
       }
     sum(success == 2*n) / nreps
