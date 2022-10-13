@@ -154,7 +154,7 @@ Pall(50,3,10000)
 ##4
 ## The probability that all prisoners find their own number is: 
 ## p(2n prisoners all escape successfully)
-## =p(maximu loops length less than or equal to n)
+## =p(maximum loops length less than or equal to n)
 ## =1-p(maximum loops length longer than n)
 ## =1-1/(n+1)-1/(n+2)-...-1/(2n)=0.31
 ## which is surprising large.
