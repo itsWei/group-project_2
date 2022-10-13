@@ -118,8 +118,8 @@ Pall <- function(n, strategy, nreps) {
     }
   else if (strategy == 3) {
     for (i in 1:nreps) {
-      S <- sample(1:(2*n), 2*n)
       for (j in 1:(2*n)) {
+        S <- sample(1:(2*n), 2*n)
         success[i] <- strategy3(n, j, S) + success[i]
       }
       }
