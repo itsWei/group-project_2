@@ -94,18 +94,16 @@ Pone <- function(n, k, strategy, nreps) {
 }
 
 
-Pone(5,1,1,10000)
-Pone(5,1,2,10000)
-Pone(5,1,3,10000)
-
 ##2 
+## function Pall estimates the probability of all prisoners finding their number, so that all are released. 
+# 
 Pall <- function(n, strategy, nreps) {
   success <- rep(0, nreps)
   if (strategy == 1) {
     for (i in 1:nreps) {
       S <- sample(1:(2*n), 2*n)
       for (j in 1:(2*n)) {
-        success[i] <- strategy1(n, j, S) + success[i]
+        success[i] <- strategy1(n, j, S) + success[i]  # The total number of prisoners who succeeded in the ith experiment
       }
       }
     sum(success == 2*n) / nreps
@@ -114,7 +112,7 @@ Pall <- function(n, strategy, nreps) {
     for (i in 1:nreps) {
       S <- sample(1:(2*n), 2*n)  # A randomly generated sequence of cards with length 2n
       for (j in 1:(2*n)) {
-        success[i] <- strategy2(n, j, S) + success[i]
+        success[i] <- strategy2(n, j, S) + success[i]  # The total number of prisoners who succeeded in the ith experiment
       }
       }
     sum(success == 2*n) / nreps
@@ -123,7 +121,7 @@ Pall <- function(n, strategy, nreps) {
     for (i in 1:nreps) {
       for (j in 1:(2*n)) {
         S <- sample(1:(2*n), 2*n)  # A randomly generated sequence of cards with length 2n
-        success[i] <- strategy3(n, j, S) + success[i]
+        success[i] <- strategy3(n, j, S) + success[i]  # The total number of prisoners who succeeded in the ith experiment
       }
       }
     sum(success == 2*n) / nreps
