@@ -72,17 +72,17 @@ strategy3 <- function(n, k, S) {
 Pone <- function(n, k, strategy, nreps) {
   pass <- rep(0, nreps)
   if (strategy == 1) {  # choose strategy 1
-    for (i in 1:nreps) {  # simulate strategy 1 nreps times
+    for (i in 1:nreps) { 
       S <- sample(1:(2*n), 2*n)  # A randomly generated sequence of cards with length 2n
       pass[i] <- strategy1(n, k, S)
     } 
   } else if (strategy == 2) {  # choose strategy 2
-    for (i in 1:nreps) {  # simulate strategy 2 nreps times
+    for (i in 1:nreps) {  
       S <- sample(1:(2*n), 2*n)  # A randomly generated sequence of cards with length 2n
       pass[i] <- strategy2(n, k, S)
     }
   }else {  # choose strategy 3
-    for (i in 1:nreps) {  # simulate strategy 3 nreps times
+    for (i in 1:nreps) {  
       S <- sample(1:(2*n), 2*n)  # A randomly generated sequence of cards with length 2n
       pass[i] <- strategy3(n, k, S)
     }
