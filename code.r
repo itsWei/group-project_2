@@ -22,8 +22,11 @@
 
 ## function Pone estimates the probabilities of success for a single prisoner under each strategy.
 
+
 # strategy 1: give a function to estimate the probabilities of success for a single prisoner under strategy 1;
-# the function takes n, k (the prison's number), S () as inputs and the function returns ???
+# function inputs: n, k (the prison's number), S (a randomly generated sequence of cards).
+# function output: 1 or 0; 1:the k-th prisoner can find his card within n times; 0: the k-th prisoner can't find his card within n times.
+
 strategy1 <- function(n, k, S) {
   card <- k  # the prisoner starts at the box with their number on it, opens it and reads the number on the card: k.
   index <- rep(0, 2*n)  # create a zero vector with length 2n to represent the index of card number
@@ -74,17 +77,17 @@ Pone <- function(n, k, strategy, nreps) {
   if (strategy == 1) {  # choose strategy 1
     for (i in 1:nreps) { 
       S <- sample(1:(2*n), 2*n)  # A randomly generated sequence of cards with length 2n
-      pass[i] <- strategy1(n, k, S)
+      pass[i] <- strategy1(n, k, S)  # if the prisoner can find his number in the i-th experiment then return 1 else return 0
     } 
   } else if (strategy == 2) {  # choose strategy 2
     for (i in 1:nreps) {  
       S <- sample(1:(2*n), 2*n)  # A randomly generated sequence of cards with length 2n
-      pass[i] <- strategy2(n, k, S)
+      pass[i] <- strategy2(n, k, S)  # if the prisoner can find his number in the i-th experiment then return 1 else return 0
     }
   }else {  # choose strategy 3
     for (i in 1:nreps) {  
       S <- sample(1:(2*n), 2*n)  # A randomly generated sequence of cards with length 2n
-      pass[i] <- strategy3(n, k, S)
+      pass[i] <- strategy3(n, k, S)  # if the prisoner can find his number in the i-th experiment then return 1 else return 0
     }
   }
   sum(pass)/nreps  # the probabilities of success for a single prisoner.
