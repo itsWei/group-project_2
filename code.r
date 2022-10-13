@@ -30,7 +30,7 @@
 strategy1 <- function(n, k, S) {
   card <- k  # the prisoner starts at the box with their number on it, opens it and reads the number on the card: k.
   index <- rep(0, 2*n)  # create a zero vector with length 2n to represent the index of card number
-  index[k] <- 1  # if cark k is found, denote 1 at index k
+  index[k] <- 1  # if card k is found, denote 1 at index k
   
   for (i in 1:(n+1)) {
     if (S[card] == k) break # stop opening the boxes when find their owm number k.
