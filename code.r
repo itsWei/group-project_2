@@ -24,7 +24,7 @@
 
 ## Function Pone estimates the probabilities of success for a single prisoner under each strategy.
 # Strategy 1: give a function to estimate the probabilities of success for a single prisoner under strategy 1;
-# Function inputs: n, k (the prison's number), S (a randomly generated sequence of cards).
+# Function inputs: n, k (the prison's number), cards_sequence (a randomly generated sequence of cards).
 # Function output: 1 or 0; 1:the k-th prisoner can find his card within n times; 0: the k-th prisoner can't find his card within n times.
 
 strategy1 <- function(n, k, cards_sequence) {
