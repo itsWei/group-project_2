@@ -160,28 +160,8 @@ Pall(50,3,10000)
 ## which is surprising large.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-strategy1 <- function(n, k, S) {
+##5
+ times_to_find_kcard<- function(n, k, S) {
   card <- k  # the prisoner starts at the box with their number on it, opens it and reads the number on the card: k.
   index <- rep(0, 2*n)  # create a zero vector with length 2n to represent the index of card number
   index[k] <- 1  # if card k is found, denote 1 at index k
@@ -193,29 +173,31 @@ strategy1 <- function(n, k, S) {
       index[card] <- 1 # denote 1 for all card in boxes that have been opened.
     }
   }
-
-  sum(index)
-  
+  sum(index)  # the number of time to find card k.
 }
 
-n <- 50
-nreps <- 10000
-
+## function dloop is to estimate the probability of each loop occurs at least once in a random shuffling of cards to boxes.
+# input: n, nreps(the number of replicate simulations)
+# output: the probability of each loop occurs at least once in a random shuffling of cards to boxes
 dloop <- function(n, nreps){
   sum_b <- rep(0,2*n)
   
-  
   for (i in 1:nreps){
-    b <- rep(0,2*n)
+    loop_length <- rep(0,2*n)
     c <- rep(0,2*n)
-    S <- sample(1:(2*n), 2*n)  # A randomly generated sequence of cards with length 2n
+    cards <- sample(1:(2*n), 2*n)  # a randomly generated sequence of cards with length 2n
     for (j in 1:(2*n)){
-      b[j] <- strategy1(n, j, S)
+      loop_length[j] <- times_to_find_kcard(n, j, cards)  # times for prisoner j to find his card i.e. the loop length
     }
-    a <- unique(b)
-    c[a] <- 1
-    sum_b <- sum_b + c
+    loop_length_index <- unique(loop_length)  # the indeices of all lengths' loops
+    c[loop_length_index] <- 1  # denote 1 for all lengths' loops
+    sum_b <- sum_b + c   # the number of loops of each length
   }
-  
-  sum_b/nreps
+  sum_b/nreps  # the probability of each loop occurs at least once
 }
+
+##6
+dloop(50,10000)
+
+
+
