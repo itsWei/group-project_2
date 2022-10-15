@@ -185,9 +185,9 @@ dloop <- function(n, nreps){
   for (i in 1:nreps){
     loop_length <- rep(0,2*n)
     c <- rep(0,2*n)
-    cards <- sample(1:(2*n), 2*n)  # a randomly generated sequence of cards with length 2n
+    cards_sequence <- sample(1:(2*n), 2*n)  # a randomly generated sequence of cards with length 2n
     for (j in 1:(2*n)){
-      loop_length[j] <- times_to_find_kcard(n, j, cards)  # times for prisoner j to find his card i.e. the loop length
+      loop_length[j] <- times_to_find_kcard(n, j, cards_sequence)  # times for prisoner j to find his card i.e. the loop length
     }
     loop_length_index <- unique(loop_length)  # the indeices of all lengths' loops
     c[loop_length_index] <- 1  # denote 1 for all lengths' loops
