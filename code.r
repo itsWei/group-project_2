@@ -27,15 +27,15 @@
 # function inputs: n, k (the prison's number), S (a randomly generated sequence of cards).
 # function output: 1 or 0; 1:the k-th prisoner can find his card within n times; 0: the k-th prisoner can't find his card within n times.
 
-strategy1 <- function(n, k, S) {
+strategy1 <- function(n, k, cards_sequence) {
   card <- k  # the prisoner starts at the box with their number on it, opens it and reads the number on the card: k.
   index <- rep(0, 2*n)  # create a zero vector with length 2n to represent the index of card number
   index[k] <- 1  # if card k is found, denote 1 at index k
   
   for (i in 1:(n+1)) {
-    if (S[card] == k) break # stop opening the boxes when find their owm number k.
+    if (cards_sequence[card] == k) break # stop opening the boxes when find their owm number k.
     else {
-      card <- S[card] # continue to open boxes to find new cards.
+      card <- cards_sequence[card] # continue to open boxes to find new cards.
       index[card] <- 1 # denote 1 for all card in boxes that have been opened.
     }
   }
@@ -45,15 +45,15 @@ strategy1 <- function(n, k, S) {
 }
 
 ## same as strategy 1, but the prisoner starts from a randomly selected box.
-strategy2 <- function(n, k, S) {
+strategy2 <- function(n, k, cards_sequence) {
   card <- sample(1:(2*n), 1) #  the prisoner starts from a randomly selected box.
   index <- rep(0, 2*n)
   index[card] <- 1
   
   for (i in 1:(n+1)) {
-    if (S[card] == k) break
+    if (cards_sequence[card] == k) break
     else {
-      card <- S[card]
+      card <- cards_sequence[card]
       index[card] <- 1
     }
   }
@@ -63,7 +63,7 @@ strategy2 <- function(n, k, S) {
 }
 
 ## randomly choose n boxes from 2n boxes
-strategy3 <- function(n, k, S) {
+strategy3 <- function(n, k, cards_sequence) {
   if (k %in% S[1:n]) {1}  # the selected n cards contain number k
   else {0}  # the selected n cards dose not contain number k.
 }
@@ -76,18 +76,18 @@ Pone <- function(n, k, strategy, nreps) {
   pass <- rep(0, nreps)
   if (strategy == 1) {  # choose strategy 1
     for (i in 1:nreps) { 
-      S <- sample(1:(2*n), 2*n)  # A randomly generated sequence of cards with length 2n
-      pass[i] <- strategy1(n, k, S)  # if the prisoner can find his number in the i-th experiment then return 1 else return 0
+      cards_sequence <- sample(1:(2*n), 2*n)  # A randomly generated sequence of cards with length 2n
+      pass[i] <- strategy1(n, k, cards_sequence)  # if the prisoner can find his number in the i-th experiment then return 1 else return 0
     } 
   } else if (strategy == 2) {  # choose strategy 2
     for (i in 1:nreps) {  
-      S <- sample(1:(2*n), 2*n)  # A randomly generated sequence of cards with length 2n
-      pass[i] <- strategy2(n, k, S)  # if the prisoner can find his number in the i-th experiment then return 1 else return 0
+      cards_sequence <- sample(1:(2*n), 2*n)  # A randomly generated sequence of cards with length 2n
+      pass[i] <- strategy2(n, k, cards_sequence)  # if the prisoner can find his number in the i-th experiment then return 1 else return 0
     }
   }else {  # choose strategy 3
     for (i in 1:nreps) {  
-      S <- sample(1:(2*n), 2*n)  # A randomly generated sequence of cards with length 2n
-      pass[i] <- strategy3(n, k, S)  # if the prisoner can find his number in the i-th experiment then return 1 else return 0
+      cards_sequence <- sample(1:(2*n), 2*n)  # A randomly generated sequence of cards with length 2n
+      pass[i] <- strategy3(n, k, cards_sequence)  # if the prisoner can find his number in the i-th experiment then return 1 else return 0
     }
   }
   sum(pass)/nreps  # the probabilities of success for a single prisoner.
@@ -104,18 +104,18 @@ Pall <- function(n, strategy, nreps) {
   success <- rep(0, nreps)
   if (strategy == 1) {  # choose strategy 1
     for (i in 1:nreps) {
-      S <- sample(1:(2*n), 2*n)  # A randomly generated sequence of cards with length 2n
+      cards_sequence <- sample(1:(2*n), 2*n)  # A randomly generated sequence of cards with length 2n
       for (j in 1:(2*n)) {
-        success[i] <- strategy1(n, j, S) + success[i]  # The total number of prisoners who succeeded in the ith experiment
+        success[i] <- strategy1(n, j, cards_sequence) + success[i]  # The total number of prisoners who succeeded in the ith experiment
       }
       }
     sum(success == 2*n) / nreps  # estimated probability 
     }
   else if (strategy == 2) {  # choose strategy 2
     for (i in 1:nreps) {
-      S <- sample(1:(2*n), 2*n)  # A randomly generated sequence of cards with length 2n
+      cards_sequence <- sample(1:(2*n), 2*n)  # A randomly generated sequence of cards with length 2n
       for (j in 1:(2*n)) {
-        success[i] <- strategy2(n, j, S) + success[i]  # The total number of prisoners who succeeded in the ith experiment
+        success[i] <- strategy2(n, j, cards_sequence) + success[i]  # The total number of prisoners who succeeded in the ith experiment
       }
       }
     sum(success == 2*n) / nreps  # estimated probability 
@@ -123,8 +123,8 @@ Pall <- function(n, strategy, nreps) {
   else if (strategy == 3) {  # choose strategy 3
     for (i in 1:nreps) {
       for (j in 1:(2*n)) {
-        S <- sample(1:(2*n), 2*n)  # A randomly generated sequence of cards with length 2n
-        success[i] <- strategy3(n, j, S) + success[i]  # The total number of prisoners who succeeded in the ith experiment
+        cards_sequence <- sample(1:(2*n), 2*n)  # A randomly generated sequence of cards with length 2n
+        success[i] <- strategy3(n, j, cards_sequence) + success[i]  # The total number of prisoners who succeeded in the ith experiment
       }
       }
     sum(success == 2*n) / nreps  # estimated probability 
@@ -161,15 +161,15 @@ Pall(50,3,10000)
 
 
 ##5
- times_to_find_kcard<- function(n, k, S) {
+ times_to_find_kcard<- function(n, k, cards_sequence) {
   card <- k  # the prisoner starts at the box with their number on it, opens it and reads the number on the card: k.
   index <- rep(0, 2*n)  # create a zero vector with length 2n to represent the index of card number
   index[k] <- 1  # if card k is found, denote 1 at index k
   
   for (i in 1:(2*n)) {
-    if (S[card] == k) break # stop opening the boxes when find their owm number k.
+    if (cards_sequence[card] == k) break # stop opening the boxes when find their owm number k.
     else {
-      card <- S[card] # continue to open boxes to find new cards.
+      card <- cards_sequence[card] # continue to open boxes to find new cards.
       index[card] <- 1 # denote 1 for all card in boxes that have been opened.
     }
   }
