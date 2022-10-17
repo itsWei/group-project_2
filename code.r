@@ -208,7 +208,7 @@ prob <- dloop(n,nreps)
 
 # The probability that there is no loop longer than 50 in a random reshuffling of cards to boxes
 1-sum(prob[(n+1):(2*n)])
-# Visualising the probabilities
+# Visualize the probabilities
 plot(prob, xlab = "loop length", ylab = "Probability", main = "The probability of each loop length from 1 to 2n \n occurring at least once in a random shuffling of cards to boxes.")
 
 
