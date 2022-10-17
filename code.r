@@ -201,7 +201,9 @@ dloop <- function(n, nreps){
 }
 
 ##6
+# Example code using dloop to estimate the probabilities for n = 50.
 dloop(50,10000)
+
 
 
 
