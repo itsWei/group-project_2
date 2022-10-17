@@ -202,7 +202,17 @@ dloop <- function(n, nreps){
 
 ##6
 # Example code using dloop to estimate the probabilities for n = 50.
-dloop(50,10000)
+##6
+n <- 50
+nreps <- 10000
+
+probi <- dloop(n,nreps)
+
+# the probability that there is no loop longer than 50 in a random reshuffling of cards to boxes
+1-sum(probi[(n+1):(2*n)])
+
+plot(probi, xlab = "loop length", ylab = "Probability", main = "The probability of each loop length from 1 to 2n \n occurring at least once in a random shuffling of cards to boxes.")
+
 
 
 
