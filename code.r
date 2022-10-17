@@ -3,6 +3,8 @@
 ## Simin Wang S2417531
 ## Zheng Wang S2283040
 
+## Address of github repo: https://github.com/itsWei/group-project_2.git
+
 ## Contribution: 
 ## Each member contributes roughly the same to this project.
 ## Changliang Wei and Simin Wang contribute more on the first function.
