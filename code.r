@@ -1,7 +1,3 @@
-## Different from strategy 3, in strategy 1 and 2, the success of one prisoner is not independent of 
-## the success of other prisoners since they depend on the distribution of 2n numbers.
-
-
 ## Group member:
 ## Changliang Wei S2345097
 ## Simin Wang S2417531
