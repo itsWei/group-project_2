@@ -62,7 +62,7 @@ strategy2 <- function(n, k, cards_sequence) {
 
 ## Randomly choose n boxes from 2n boxes.
 strategy3 <- function(n, k, cards_sequence) {
-  if (k %in% S[1:n]) {1}  # The selected n cards contain number k.
+  if (k %in% cards_sequence[1:n]) {1}  # The selected n cards contain number k.
   else {0}  # The selected n cards dose not contain number k.
 }
 
