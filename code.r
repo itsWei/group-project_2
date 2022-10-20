@@ -200,7 +200,7 @@ dloop <- function(n, nreps){
   sum_b/nreps  # The probability of each loop occurs at least once.
 }
 
-##6
+
 # Example code using dloop to estimate the probabilities for n = 50.
 n <- 50
 nreps <- 10000
